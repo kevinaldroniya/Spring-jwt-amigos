@@ -45,7 +45,7 @@ public class JwtService {
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .encryptWith(getSignInKey(), Jwts.ENC.A128CBC_HS256)
+                .signWith(getSignInKey(), Jwts.SIG.HS256)
                 .compact();
     }
 
